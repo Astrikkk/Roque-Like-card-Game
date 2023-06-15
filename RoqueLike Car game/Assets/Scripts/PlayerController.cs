@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
-    private Vector2 movement;
+    public static Vector2 movement;
     private Transform playerTransform;
 
     void Start()

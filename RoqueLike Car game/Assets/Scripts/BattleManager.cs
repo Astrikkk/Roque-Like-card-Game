@@ -18,8 +18,8 @@ public class BattleManager : MonoBehaviour
     {
         Player.NameText = PlayerName;
         Player.HpText = PlayerHp;
-        Enemy.NameText = PlayerName;
-        Enemy.HpText = PlayerHp;
+        Enemy.NameText = EnemyName;
+        Enemy.HpText = EnemyHp;
     }
     public void NextMove()
     {
@@ -28,16 +28,16 @@ public class BattleManager : MonoBehaviour
             switch (choosenCard.typeOfAttack)
             {
                 case TypeOfAttack.Fire:
-                    Enemy.HP += Enemy.FireDefence -= Player.damage + choosenCard.PlusDamage;
+                    Enemy.HP += Enemy.FireDefence - (Player.damage + choosenCard.PlusDamage);
                     break;
                 case TypeOfAttack.Woter:
-                    Enemy.HP += Enemy.WoterDefence -= Player.damage + choosenCard.PlusDamage;
+                    Enemy.HP += Enemy.WoterDefence - (Player.damage + choosenCard.PlusDamage);
                     break;
                 case TypeOfAttack.Dark:
-                    Enemy.HP += Enemy.DarkDefence -= Player.damage + choosenCard.PlusDamage;
+                    Enemy.HP += Enemy.DarkDefence - (Player.damage + choosenCard.PlusDamage);
                     break;
                 case TypeOfAttack.Nothing:
-                    Enemy.HP += Enemy.Defence -= Player.damage + choosenCard.PlusDamage;
+                    Enemy.HP += Enemy.Defence - (Player.damage + choosenCard.PlusDamage);
                     break;
                 default:
                     Debug.Log("Invalid attack type.");
@@ -46,16 +46,16 @@ public class BattleManager : MonoBehaviour
             switch (Enemy.typeOfAttack)
             {
                 case TypeOfAttack.Fire:
-                    Player.HP += Player.FireDefence -= Enemy.damage;
+                    Player.HP += Player.FireDefence - Enemy.damage;
                     break;
                 case TypeOfAttack.Woter:
-                    Player.HP += Player.WoterDefence -= Enemy.damage;
+                    Player.HP += Player.WoterDefence - Enemy.damage;
                     break;
                 case TypeOfAttack.Dark:
-                    Player.HP += Player.DarkDefence -= Enemy.damage;
+                    Player.HP += Player.DarkDefence - Enemy.damage;
                     break;
                 case TypeOfAttack.Nothing:
-                    Player.HP += Player.Defence -= Enemy.damage;
+                    Player.HP += Player.Defence - Enemy.damage;
                     break;
                 default:
                     Debug.Log("Invalid attack type.");
@@ -68,6 +68,7 @@ public class BattleManager : MonoBehaviour
             }
             if (Enemy.HP <= 0)
             {
+                MainMenuManager.Money++;
                 GM.SwitchScene("WinMenu");
             }
             choosenCard = null;
