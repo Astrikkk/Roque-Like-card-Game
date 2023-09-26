@@ -25,7 +25,7 @@ public class EnemyCave : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Time.time - startTime < 5f)
+            if (Time.time - startTime < 2f)
             {
                 Destroy(gameObject);
             }

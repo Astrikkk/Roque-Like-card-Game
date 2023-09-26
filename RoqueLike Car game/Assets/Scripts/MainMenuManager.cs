@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI FireDefenceText;
     public TextMeshProUGUI WoterDefenceText;
     public TextMeshProUGUI DarkDefenceText;
+    public TextMeshProUGUI MoneyText;
     public static int Money;
 
     private void Update()
@@ -21,6 +22,7 @@ public class MainMenuManager : MonoBehaviour
         FireDefenceText.text = Player.FireDefence.ToString();
         WoterDefenceText.text = Player.WoterDefence.ToString();
         DarkDefenceText.text = Player.DarkDefence.ToString();
+        MoneyText.text = Money.ToString() + "$";
     }
 
 

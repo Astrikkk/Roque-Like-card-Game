@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameObject.transform.position = movement;
         playerTransform = GetComponent<Transform>();
     }
 
